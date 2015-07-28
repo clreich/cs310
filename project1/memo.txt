@@ -1,0 +1,51 @@
+Project 1 Christopher Reich
+
+Q1. The high degree nodes have a lot of
+    friends, or they interact with a lot of different people.
+    This does not mean that they do the most interacting. In 
+    the case of pcap files, it represents IP addresses that
+    communicate with the largest number of other IP addresses.
+    
+Q2. The high degree nodes of the Max Spanning Tree represent 
+    the nodes that do the most interacting with the most
+    amount of people. These are the hubs of activity.
+    
+    
+ Summary:
+ 
+Overall the project was challenging and interesting.
+The first main step was to store all the information from the pcap file.
+I elected to have a HashMap of Strings, representing the source of communication
+between IP addresses, and LinkedLists of Strings, holding the destination of all
+communication from its source. This goes on until the pcap file ends.
+
+A graph object is created and 
+the source IP addresses search each of their lists, looking for a communication
+coming back from another IP. If bi-directional communication occurs, then the addresses
+are added as nodes and an edge is created between the nodes.
+
+At this point the edges do not have a weight, so the HashMap is searched again,
+counting the number of communications between nodes. That number is added as an
+attribute to each Edge.
+
+To find the connected components of the graph, DFS is applied via
+another class called CC.
+An object of this class takes a Graph object and parses its connected
+components using DFS.
+I implemented a method that returns each connected component as a Graph object
+representation of itself, so that each component can be passed as a graph to find
+its Max Spanning Tree.
+There is also a method that returns a custom priority Queue of Node objects from a graph sorted
+by their degree. This is designed for printing in the main method.
+
+To find the Max spanning tree of each component, I created another class called MaxST.
+Objects of this class take a graph and finds the MST. The object can also return a
+Graph representation of its MST. 
+
+
+
+
+
+
+
+    
